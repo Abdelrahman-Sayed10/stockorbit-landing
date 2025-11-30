@@ -1,342 +1,762 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
-
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  p {
-    margin: 0;
-    color: var(--gray-700);
-  }
-
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .angular-logo {
-    max-width: 9.2rem;
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
-  }
-
-  .pill-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-
-  .pill {
-    display: flex;
-    align-items: center;
-    --pill-accent: var(--bright-blue);
-    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
-    padding-inline: 0.75rem;
-    padding-block: 0.375rem;
-    border-radius: 2.75rem;
-    border: 0;
-    transition: background 0.3s ease;
-    font-family: var(--inter-font);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.4rem;
-    letter-spacing: -0.00875rem;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .pill:hover {
-    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-  }
-
-  .pill-group .pill:nth-child(6n + 1) {
-    --pill-accent: var(--bright-blue);
-  }
-  .pill-group .pill:nth-child(6n + 2) {
-    --pill-accent: var(--electric-violet);
-  }
-  .pill-group .pill:nth-child(6n + 3) {
-    --pill-accent: var(--french-violet);
-  }
-
-  .pill-group .pill:nth-child(6n + 4),
-  .pill-group .pill:nth-child(6n + 5),
-  .pill-group .pill:nth-child(6n + 6) {
-    --pill-accent: var(--hot-red);
-  }
-
-  .pill-group svg {
-    margin-inline-start: 0.25rem;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-  }
-
-  .social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-  }
-
-  .social-links a:hover svg path {
-    fill: var(--gray-900);
-  }
-
-  @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      width: max-content;
-    }
-
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--red-to-pink-to-purple-horizontal-gradient);
-      margin-block: 1.5rem;
-    }
-  }
-</style>
-
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 982 239"
-        fill="none"
-        class="angular-logo"
-      >
-        <g clip-path="url(#a)">
-          <path
-            fill="url(#b)"
-            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
-          />
-          <path
-            fill="url(#c)"
-            d="M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"
-          />
-        </g>
-        <defs>
-          <radialGradient
-            id="c"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientTransform="rotate(118.122 171.182 60.81) scale(205.794)"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#FF41F8" />
-            <stop offset=".707" stop-color="#FF41F8" stop-opacity=".5" />
-            <stop offset="1" stop-color="#FF41F8" stop-opacity="0" />
-          </radialGradient>
-          <linearGradient
-            id="b"
-            x1="0"
-            x2="982"
-            y1="192"
-            y2="192"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#F0060B" />
-            <stop offset="0" stop-color="#F0070C" />
-            <stop offset=".526" stop-color="#CC26D5" />
-            <stop offset="1" stop-color="#7702FF" />
-          </linearGradient>
-          <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
-        </defs>
-      </svg>
-      <h1>Hello, {{ title() }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+<div class="page">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span>{{ productName }}</span>
+      <span class="nav-brand-pill">Inventory & Stock</span>
     </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
-      <div class="pill-group">
-        @for (item of [
-          { title: 'Explore the Docs', link: 'https://angular.dev' },
-          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-          { title: 'Prompt and best practices for AI', link: 'https://angular.dev/ai/develop-with-ai'},
-          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
-          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
-        ]; track item.title) {
-          <a
-            class="pill"
-            [href]="item.link"
-            target="_blank"
-            rel="noopener"
-          >
-            <span>{{ item.title }}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              viewBox="0 -960 960 960"
-              width="14"
-              fill="currentColor"
-            >
-              <path
-                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
-              />
-            </svg>
-          </a>
-        }
+
+    <div class="nav-right">
+      <div class="nav-links" [class.is-open]="isMobileMenuOpen">
+        <a href="#features" class="nav-link" (click)="onMobileNavLinkClick()">Features</a>
+        <a href="#modules" class="nav-link" (click)="onMobileNavLinkClick()">Modules</a>
+        <a href="#screenshots" class="nav-link" (click)="onMobileNavLinkClick()">Product tour</a>
+        <a href="#faqs" class="nav-link" (click)="onMobileNavLinkClick()">FAQ</a>
+        <a href="#contact" class="nav-link nav-link-cta nav-link-mobile-only" (click)="onMobileNavLinkClick()">Request demo</a>
       </div>
-      <div class="social-links">
-        <a
-          href="https://github.com/angular/angular"
-          aria-label="Github"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            alt="Github"
-          >
-            <path
-              d="M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z"
-            />
-          </svg>
+      <div class="nav-actions">
+        <a href="#contact" class="nav-cta-wrapper">
+          <button class="nav-cta">Request demo</button>
         </a>
-        <a
-          href="https://twitter.com/angular"
-          aria-label="Twitter"
-          target="_blank"
-          rel="noopener"
+        <button
+          class="nav-hamburger"
+          (click)="toggleMobileMenu()"
+          [class.is-open]="isMobileMenuOpen"
+          aria-label="Toggle menu"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            alt="Twitter"
-          >
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-            />
-          </svg>
-        </a>
-        <a
-          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
-          aria-label="Youtube"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg
-            width="29"
-            height="20"
-            viewBox="0 0 29 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            alt="Youtube"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z"
-            />
-          </svg>
-        </a>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-chip chip hero-chip">
+      <span class="badge-dot"></span>
+      Smart Inventory Platform
+    </div>
+
+    <h1 class="hero-title">
+      <span class="hero-gradient">{{ productName }}</span> for real-world stock control.
+    </h1>
+
+    <p class="hero-subtitle">
+      {{ subtitle }}
+    </p>
+
+    <div class="metrics">
+      <div class="metric-card fade-in delay-1" *ngFor="let m of metrics">
+        <div class="metric-value">{{ m.value }}</div>
+        <div class="metric-label">{{ m.label }}</div>
+        <div class="metric-note">{{ m.note }}</div>
+      </div>
+    </div>
+    <div class="hero-actions" style="margin-top: 18px; margin-bottom: -20px">
+      <a href="#contact">
+        <button class="nav-cta">Request demo</button>
+      </a>
+      <a href="#screenshots" class="nav-link" style="margin-left: 14px"> See product tour </a>
+    </div>
+
+    <!--  -->
+  </section>
+
+  <!-- Why StockOrbit -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Why StockOrbit?</div>
+      <h2 class="section-title">Why StockOrbit?</h2>
+      <p class="section-subtitle">
+        StockOrbit replaces Excel, WhatsApp, and manual stock handling with a unified, fast,
+        real-time inventory system built for real operations.
+      </p>
+    </div>
+
+    <div class="contact-inner">
+      <div class="card-soft">
+        <div class="grid">
+          <article class="fade-in">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Real-time accuracy</div>
+                <p class="card-body">Live stock levels across all warehouses.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fade-in delay-1">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Full tracking</div>
+                <p class="card-body">Every movement linked to projects and warehouses.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fade-in delay-2">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Zero missing materials</div>
+                <p class="card-body">Requests and issues are structured, not lost in chats.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fade-in delay-3">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Loved by end users</div>
+                <p class="card-body">Clean UI that teams actually enjoy using.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fade-in delay-2">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Fast rollout</div>
+                <p class="card-body">Go live in days, not months.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="fade-in delay-3">
+            <div style="display: flex; align-items: flex-start; gap: 10px">
+              <span class="card-icon">✔</span>
+              <div>
+                <div class="card-title">Clear cost visibility</div>
+                <p class="card-body">
+                  Know item value instantly with accurate FIFO & average costing.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features / Capabilities -->
+  <section id="features" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Capabilities</div>
+      <h2 class="section-title">Capabilities</h2>
+      <p class="section-subtitle">What StockOrbit gives you immediately:</p>
+    </div>
+
+    <!--  -->
+    <div class="hero-shadow-card" style="margin-bottom: 28px">
+      <p>
+        StockOrbit becomes your single source of truth for inventory, movements, and stock value.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article
+        class="card fade-in delay-1"
+        *ngFor="let f of features; let i = index"
+        [class.delay-2]="i === 1"
+        [class.delay-3]="i === 2"
+      >
+        <div class="card-icon">{{ f.icon }}</div>
+        <h3 class="card-title">{{ f.title }}</h3>
+        <p class="card-body">{{ f.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Who Uses StockOrbit -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Who Uses StockOrbit</div>
+      <h2 class="section-title">Who Uses StockOrbit</h2>
+      <p class="section-subtitle">Built for real-world companies:</p>
+    </div>
+
+    <div class="contact-inner">
+      <div class="card-soft">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <span class="nav-brand-pill">Contractors</span>
+          <span class="nav-brand-pill">Trading & Distribution</span>
+          <span class="nav-brand-pill">Manufacturing</span>
+          <span class="nav-brand-pill">Workshops & Maintenance</span>
+          <span class="nav-brand-pill">Engineering Services</span>
+          <span class="nav-brand-pill">Project-Based Companies</span>
+          <span class="nav-brand-pill">Retail & Stores</span>
+          <span class="nav-brand-pill">Real Estate Development</span>
+          <span class="nav-brand-pill">Construction Materials Suppliers</span>
+          <span class="nav-brand-pill">Spare Parts & Auto Parts</span>
+          <span class="nav-brand-pill">Furniture & Home Appliances</span>
+          <span class="nav-brand-pill">Electrical & Plumbing Suppliers</span>
+          <span class="nav-brand-pill">Small Factories</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Modules -->
+  <section id="modules" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Core Modules</div>
+      <h2 class="section-title">Core Modules</h2>
+      <p class="section-subtitle">
+        The essential building blocks that replace manual stock handling with structured workflows.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/core/inventory-items.png')"
+            src="/screenshots/core/inventory-items.png"
+            alt="Inventory items in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="card-title">Inventory Items</h3>
+        <p class="card-body">
+          Centralized catalog for all materials with clear names, units, and categories.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/core/stock-movements.png')"
+            src="/screenshots/core/stock-movements.png"
+            alt="Stock movements in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="card-title">Stock Movements</h3>
+        <p class="card-body">
+          Full movement history for every item across warehouses and projects.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/core/issue-request.png')"
+            src="/screenshots/core/issue-request.png"
+            alt="Issue requests in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="card-title">Issue Requests</h3>
+        <p class="card-body">
+          Engineers and site teams raise clear, trackable material requests instead of messages.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-3">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/core/issue-voucher.png')"
+            src="/screenshots/core/issue-voucher.png"
+            alt="Issue vouchers in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="card-title">Issue Vouchers</h3>
+        <p class="card-body">
+          Storekeepers issue approved quantities with full audit trail and project references.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/core/all-dashboards.png')"
+            src="/screenshots/core/all-dashboards.png"
+            alt="All dashboards overview in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="card-title">All Dashboards (Overview)</h3>
+        <p class="card-body">
+          One place to access every operational and management dashboard in the system.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Dashboards / Product tour -->
+  <section id="screenshots" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Dashboards</div>
+      <h2 class="section-title">Dashboards</h2>
+      <p class="section-subtitle">Live insights for managers to make fast, correct decisions.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/item-cost-1.png')"
+            src="/screenshots/dashboards/item-cost-1.png"
+            alt="Item cost dashboard view 1"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Item Cost Dashboard (1)</h3>
+        <p class="screenshot-desc">See stock value and cost per item at a glance.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/item-cost-2.png')"
+            src="/screenshots/dashboards/item-cost-2.png"
+            alt="Item cost dashboard view 2"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Item Cost Dashboard (2)</h3>
+        <p class="screenshot-desc">Drill into items, warehouses, and time periods.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/item-movement-1.png')"
+            src="/screenshots/dashboards/item-movement-1.png"
+            alt="Item movement dashboard view 1"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Item Movement Dashboard (1)</h3>
+        <p class="screenshot-desc">Visualize stock in/out activity across locations.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-3">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/item-movement-2.png')"
+            src="/screenshots/dashboards/item-movement-2.png"
+            alt="Item movement dashboard view 2"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Item Movement Dashboard (2)</h3>
+        <p class="screenshot-desc">Spot fast-moving and slow-moving materials quickly.</p>
+      </article>
+
+      <article class="card-soft fade-in">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/item-performance.png')"
+            src="/screenshots/dashboards/item-performance.png"
+            alt="Item performance dashboard"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Item Performance</h3>
+        <p class="screenshot-desc">
+          Measure item usage, performance, and contribution to projects.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/project-cost-center-1.png')"
+            src="/screenshots/dashboards/project-cost-center-1.png"
+            alt="Project cost center dashboard view 1"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Project Cost Center (1)</h3>
+        <p class="screenshot-desc">Track material consumption per project or cost center.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/project-cost-center-2.png')"
+            src="/screenshots/dashboards/project-cost-center-2.png"
+            alt="Project cost center dashboard view 2"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Project Cost Center (2)</h3>
+        <p class="screenshot-desc">Compare planned vs. actual stock usage for each project.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-3">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/dashboards/stock-health.png')"
+            src="/screenshots/dashboards/stock-health.png"
+            alt="Stock health dashboard"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Stock Health</h3>
+        <p class="screenshot-desc">
+          Monitor overstocks, shortages, and slow-moving items in real time.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Reports -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Reports</div>
+      <h2 class="section-title">Reports</h2>
+      <p class="section-subtitle">Ready-to-export reports your auditors will love.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/reports/reports.png')"
+            src="/screenshots/reports/reports.png"
+            alt="Reports center in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Reports Center</h3>
+        <p class="screenshot-desc">Central hub for all operational and analytical reports.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/reports/report-inventory-excel.png')"
+            src="/screenshots/reports/report-inventory-excel.png"
+            alt="Inventory report in Excel"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Inventory Report – Excel</h3>
+        <p class="screenshot-desc">Detailed inventory report exported directly to Excel.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <div class="screenshot-img">
+          <img
+            class="screenshot-zoomable"
+            (click)="openLightbox('/screenshots/reports/report-inventory-pdf.png')"
+            src="/screenshots/reports/report-inventory-pdf.png"
+            alt="Inventory report in PDF"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="screenshot-title">Inventory Report – PDF</h3>
+        <p class="screenshot-desc">Clean, ready-to-share PDF format for management and auditors.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Advanced Features -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Advanced Features</div>
+      <h2 class="section-title">Advanced Features</h2>
+      <p class="section-subtitle">
+        Control, automation, and visibility across your entire stock operation.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <h3 class="card-title">User Management</h3>
+        <p class="card-body">Role-based access • Unlimited users</p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <h3 class="card-title">Permissions &amp; Roles</h3>
+        <p class="card-body">Granular control for every module and action.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <h3 class="card-title">Workflow &amp; Approvals</h3>
+        <p class="card-body">
+          Multi-level approvals • Project &amp; warehouse approvals • Approve/reject from mobile
+          &amp; PC.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-3">
+        <h3 class="card-title">My Tasks</h3>
+        <p class="card-body">All requests &amp; approvals in one place for each user.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-2">
+        <h3 class="card-title">Notifications System</h3>
+        <p class="card-body">
+          In-app notifications • Email alerts • Mobile push • Low stock alerts • Request reminders.
+        </p>
+      </article>
+
+      <article class="card-soft fade-in delay-3">
+        <h3 class="card-title">Settings &amp; Controls</h3>
+        <p class="card-body">
+          Configure workflow, alerts, notifications, and system behaviors to match your policies.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- AI Copilot -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">AI Copilot</div>
+      <h2 class="section-title">AI Copilot — powered by ChatGPT</h2>
+      <p class="section-subtitle">Your team’s personal assistant for stock operations.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <div class="screenshot-img">
+          <img
+            src="/screenshots/bonus/ai-copilot.png"
+            alt="AI Copilot in StockOrbit"
+            loading="lazy"
+          />
+        </div>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <h3 class="card-title">What the Copilot can do</h3>
+        <ul style="list-style: disc; padding-left: 1.5rem; margin: 0" class="card-body">
+          <li>Explain stock issues</li>
+          <li>Generate reports</li>
+          <li>Create requests</li>
+          <li>Approve vouchers</li>
+          <li>Predict stock shortages</li>
+          <li>Navigate the system</li>
+          <li>Convert natural language into actions</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Why StockOrbit Wins -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Comparison</div>
+      <h2 class="section-title">Why StockOrbit Wins</h2>
+      <p class="section-subtitle">From scattered tools and manual work to one focused platform.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <h3 class="card-title">Excel / WhatsApp</h3>
+        <ul style="list-style: none; padding-left: 0" class="card-body">
+          <li>❌ No accuracy</li>
+          <li>❌ Lost requests</li>
+          <li>❌ No dashboards</li>
+          <li>❌ No audit trail</li>
+          <li>❌ No automation</li>
+        </ul>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <h3 class="card-title">StockOrbit</h3>
+        <ul style="list-style: none; padding-left: 0" class="card-body">
+          <li>✔ Real-time accuracy</li>
+          <li>✔ Full audit history</li>
+          <li>✔ Structured workflows</li>
+          <li>✔ Live dashboards</li>
+          <li>✔ Powerful reports</li>
+          <li>✔ AI Assistant</li>
+          <li>✔ Notifications everywhere</li>
+          <li>✔ Designed for real operations</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Support & Continuous Updates -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Support &amp; Updates</div>
+      <h2 class="section-title">Support &amp; Continuous Updates</h2>
+      <p class="section-subtitle">We stay with you after go-live — not just during the project.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card-soft fade-in">
+        <h3 class="card-title">Continuous Updates — All Year Long</h3>
+        <p class="card-body">Quarterly UI/UX updates • New modules • Bug fixes • Enhancements.</p>
+      </article>
+
+      <article class="card-soft fade-in delay-1">
+        <h3 class="card-title">Fast Support</h3>
+        <p class="card-body">WhatsApp • Remote sessions • Email support • Training.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faqs" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">
+        The questions most companies ask before they switch from Excel and manual stock handling.
+      </p>
+    </div>
+
+    <div class="contact-inner">
+      <div class="faq-item">
+        <h3 class="faq-question">Does it support multiple warehouses?</h3>
+        <p class="faq-answer">
+          Yes. You can define multiple main, site, and project warehouses with full control and
+          reporting.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do you support approvals?</h3>
+        <p class="faq-answer">
+          Yes. StockOrbit includes configurable multi-level approvals for requests, issue vouchers,
+          and other workflows.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do you support mobile?</h3>
+        <p class="faq-answer">
+          The web app is fully responsive and works on laptops and tablets, with support for
+          mobile-friendly approvals and views.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Is AI really included?</h3>
+        <p class="faq-answer">
+          Yes. The AI Copilot is built-in, powered by ChatGPT, and helps users understand data,
+          generate insights, and perform actions.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do you support Arabic?</h3>
+        <p class="faq-answer">Yes, full English + Arabic from login to reports.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">How fast can we go live?</h3>
+        <p class="faq-answer">
+          In days, not months — depending on how fast we receive your data and configuration
+          decisions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title">Book a quick demo</h2>
+      <p class="section-subtitle">
+        Send a short message and we’ll come back with a demo slot and a tailored walkthrough based
+        on your industry.
+      </p>
+    </div>
+
+    <div class="contact-inner">
+      <!-- Replace `YOUR_FORM_ID` with your real Formspree form URL -->
+      <form class="contact-form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input id="company" name="company" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input id="phone" name="phone" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="message">What are you struggling with today?</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Example: we have 3 warehouses and Excel is out of control..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit">Send message</button>
+      </form>
+
+      <p class="contact-note">
+        Later you can replace this with your own API or .NET backend. For now, Formspree (or a
+        similar service) will email submissions directly to you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Image Lightbox Overlay -->
+  <div
+    class="image-lightbox-overlay"
+    [class.is-open]="isLightboxOpen"
+    (click)="onLightboxBackdropClick($event)"
+  >
+    <div class="image-lightbox-content" (click)="$event.stopPropagation()">
+      <button
+        type="button"
+        class="image-lightbox-close"
+        (click)="closeLightbox()"
+        aria-label="Close screenshot"
+      >
+        ×
+      </button>
+      <img
+        *ngIf="lightboxImageSrc"
+        [src]="lightboxImageSrc"
+        alt="Enlarged StockOrbit screenshot"
+        class="image-lightbox-img"
+      />
     </div>
   </div>
-</main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />
+  <!-- Footer -->
+  <footer class="footer">© {{ productName }} {{ currentYear }} – All rights reserved.</footer>
+</div>
