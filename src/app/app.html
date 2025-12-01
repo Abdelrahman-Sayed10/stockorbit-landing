@@ -1,22 +1,56 @@
-<div class="page">
+<div class="page" [class.page-rtl]="currentLang === 'ar'">
   <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-brand">
       <span>{{ productName }}</span>
-      <span class="nav-brand-pill">Inventory & Stock</span>
+      <span class="nav-brand-pill">{{ t.navInventoryStock }}</span>
     </div>
 
     <div class="nav-right">
       <div class="nav-links" [class.is-open]="isMobileMenuOpen">
-        <a href="#features" class="nav-link" (click)="onMobileNavLinkClick()">Features</a>
-        <a href="#modules" class="nav-link" (click)="onMobileNavLinkClick()">Modules</a>
-        <a href="#screenshots" class="nav-link" (click)="onMobileNavLinkClick()">Product tour</a>
-        <a href="#faqs" class="nav-link" (click)="onMobileNavLinkClick()">FAQ</a>
-        <a href="#contact" class="nav-link nav-link-cta nav-link-mobile-only" (click)="onMobileNavLinkClick()">Request demo</a>
+        <a href="#features" class="nav-link" (click)="onMobileNavLinkClick()">{{ t.navFeatures }}</a>
+        <a href="#modules" class="nav-link" (click)="onMobileNavLinkClick()">{{ t.navModules }}</a>
+        <a href="#screenshots" class="nav-link" (click)="onMobileNavLinkClick()">{{ t.navTour }}</a>
+        <a href="#faqs" class="nav-link" (click)="onMobileNavLinkClick()">{{ t.navFAQ }}</a>
+        <a href="#contact" class="nav-link nav-link-cta nav-link-mobile-only" (click)="onMobileNavLinkClick()">{{ t.navRequestDemo }}</a>
+        <!-- Language toggle in mobile menu -->
+        <div class="lang-toggle lang-toggle-mobile" *ngIf="isMobile">
+          <button
+            type="button"
+            [class.is-active]="currentLang === 'en'"
+            (click)="setLanguage('en')"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            [class.is-active]="currentLang === 'ar'"
+            (click)="setLanguage('ar')"
+          >
+            AR
+          </button>
+        </div>
       </div>
       <div class="nav-actions">
+        <!-- Language toggle on desktop (hidden on mobile via CSS) -->
+        <div class="lang-toggle">
+          <button
+            type="button"
+            [class.is-active]="currentLang === 'en'"
+            (click)="setLanguage('en')"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            [class.is-active]="currentLang === 'ar'"
+            (click)="setLanguage('ar')"
+          >
+            AR
+          </button>
+        </div>
         <a href="#contact" class="nav-cta-wrapper">
-          <button class="nav-cta">Request demo</button>
+          <button class="nav-cta">{{ t.navRequestDemo }}</button>
         </a>
         <button
           class="nav-hamburger"
@@ -36,15 +70,15 @@
   <section class="hero">
     <div class="hero-chip chip hero-chip">
       <span class="badge-dot"></span>
-      Smart Inventory Platform
+      {{ t.heroChip }}
     </div>
 
     <h1 class="hero-title">
-      <span class="hero-gradient">{{ productName }}</span> for real-world stock control.
+      <span class="hero-gradient">{{ productName }}</span> {{ currentLang === 'en' ? 'for real-world stock control.' : 'للتحكم الفعلي في المخزون.' }}
     </h1>
 
     <p class="hero-subtitle">
-      {{ subtitle }}
+      {{ t.subtitle }}
     </p>
 
     <div class="metrics">
@@ -56,9 +90,9 @@
     </div>
     <div class="hero-actions" style="margin-top: 18px; margin-bottom: -20px">
       <a href="#contact">
-        <button class="nav-cta">Request demo</button>
+        <button class="nav-cta">{{ t.heroCta }}</button>
       </a>
-      <a href="#screenshots" class="nav-link" style="margin-left: 14px"> See product tour </a>
+      <a href="#screenshots" class="nav-link" style="margin-left: 14px"> {{ t.seeProductTour }} </a>
     </div>
 
     <!--  -->
@@ -67,11 +101,10 @@
   <!-- Why StockOrbit -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Why StockOrbit?</div>
-      <h2 class="section-title">Why StockOrbit?</h2>
+      <div class="section-eyebrow">{{ t.whyTitle }}</div>
+      <h2 class="section-title">{{ t.whyTitle }}</h2>
       <p class="section-subtitle">
-        StockOrbit replaces Excel, WhatsApp, and manual stock handling with a unified, fast,
-        real-time inventory system built for real operations.
+        {{ t.whySubtitle }}
       </p>
     </div>
 
@@ -82,8 +115,8 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Real-time accuracy</div>
-                <p class="card-body">Live stock levels across all warehouses.</p>
+                <div class="card-title">{{ t.whyRealTime }}</div>
+                <p class="card-body">{{ t.whyRealTimeDesc }}</p>
               </div>
             </div>
           </article>
@@ -92,8 +125,8 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Full tracking</div>
-                <p class="card-body">Every movement linked to projects and warehouses.</p>
+                <div class="card-title">{{ t.whyTracking }}</div>
+                <p class="card-body">{{ t.whyTrackingDesc }}</p>
               </div>
             </div>
           </article>
@@ -102,8 +135,8 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Zero missing materials</div>
-                <p class="card-body">Requests and issues are structured, not lost in chats.</p>
+                <div class="card-title">{{ t.whyZeroMissing }}</div>
+                <p class="card-body">{{ t.whyZeroMissingDesc }}</p>
               </div>
             </div>
           </article>
@@ -112,8 +145,8 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Loved by end users</div>
-                <p class="card-body">Clean UI that teams actually enjoy using.</p>
+                <div class="card-title">{{ t.whyLoved }}</div>
+                <p class="card-body">{{ t.whyLovedDesc }}</p>
               </div>
             </div>
           </article>
@@ -122,8 +155,8 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Fast rollout</div>
-                <p class="card-body">Go live in days, not months.</p>
+                <div class="card-title">{{ t.whyFast }}</div>
+                <p class="card-body">{{ t.whyFastDesc }}</p>
               </div>
             </div>
           </article>
@@ -132,9 +165,9 @@
             <div style="display: flex; align-items: flex-start; gap: 10px">
               <span class="card-icon">✔</span>
               <div>
-                <div class="card-title">Clear cost visibility</div>
+                <div class="card-title">{{ t.whyCost }}</div>
                 <p class="card-body">
-                  Know item value instantly with accurate FIFO & average costing.
+                  {{ t.whyCostDesc }}
                 </p>
               </div>
             </div>
@@ -147,15 +180,15 @@
   <!-- Features / Capabilities -->
   <section id="features" class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Capabilities</div>
-      <h2 class="section-title">Capabilities</h2>
-      <p class="section-subtitle">What StockOrbit gives you immediately:</p>
+      <div class="section-eyebrow">{{ t.capabilitiesTitle }}</div>
+      <h2 class="section-title">{{ t.capabilitiesTitle }}</h2>
+      <p class="section-subtitle">{{ t.capabilitiesSubtitle }}</p>
     </div>
 
     <!--  -->
     <div class="hero-shadow-card" style="margin-bottom: 28px">
       <p>
-        StockOrbit becomes your single source of truth for inventory, movements, and stock value.
+        {{ t.capabilitiesDesc }}
       </p>
     </div>
 
@@ -176,9 +209,9 @@
   <!-- Who Uses StockOrbit -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Who Uses StockOrbit</div>
-      <h2 class="section-title">Who Uses StockOrbit</h2>
-      <p class="section-subtitle">Built for real-world companies:</p>
+      <div class="section-eyebrow">{{ t.whoUsesTitle }}</div>
+      <h2 class="section-title">{{ t.whoUsesTitle }}</h2>
+      <p class="section-subtitle">{{ t.whoUsesSubtitle }}</p>
     </div>
 
     <div class="contact-inner">
@@ -205,10 +238,10 @@
   <!-- Core Modules -->
   <section id="modules" class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Core Modules</div>
-      <h2 class="section-title">Core Modules</h2>
+      <div class="section-eyebrow">{{ t.modulesTitle }}</div>
+      <h2 class="section-title">{{ t.modulesTitle }}</h2>
       <p class="section-subtitle">
-        The essential building blocks that replace manual stock handling with structured workflows.
+        {{ t.modulesSubtitle }}
       </p>
     </div>
 
@@ -217,15 +250,15 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/core/inventory-items.png')"
-            src="/screenshots/core/inventory-items.png"
+            (click)="openLightbox('core/inventory-items.png')"
+            [src]="getScreenshot('core/inventory-items.png')"
             alt="Inventory items in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="card-title">Inventory Items</h3>
+        <h3 class="card-title">{{ modules[0].name }}</h3>
         <p class="card-body">
-          Centralized catalog for all materials with clear names, units, and categories.
+          {{ modules[0].description }}
         </p>
       </article>
 
@@ -233,15 +266,15 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/core/stock-movements.png')"
-            src="/screenshots/core/stock-movements.png"
+            (click)="openLightbox('core/stock-movements.png')"
+            [src]="getScreenshot('core/stock-movements.png')"
             alt="Stock movements in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="card-title">Stock Movements</h3>
+        <h3 class="card-title">{{ modules[1].name }}</h3>
         <p class="card-body">
-          Full movement history for every item across warehouses and projects.
+          {{ modules[1].description }}
         </p>
       </article>
 
@@ -249,15 +282,15 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/core/issue-request.png')"
-            src="/screenshots/core/issue-request.png"
+            (click)="openLightbox('core/issue-request.png')"
+            [src]="getScreenshot('core/issue-request.png')"
             alt="Issue requests in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="card-title">Issue Requests</h3>
+        <h3 class="card-title">{{ modules[2].name }}</h3>
         <p class="card-body">
-          Engineers and site teams raise clear, trackable material requests instead of messages.
+          {{ modules[2].description }}
         </p>
       </article>
 
@@ -265,15 +298,15 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/core/issue-voucher.png')"
-            src="/screenshots/core/issue-voucher.png"
+            (click)="openLightbox('core/issue-voucher.png')"
+            [src]="getScreenshot('core/issue-voucher.png')"
             alt="Issue vouchers in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="card-title">Issue Vouchers</h3>
+        <h3 class="card-title">{{ modules[3].name }}</h3>
         <p class="card-body">
-          Storekeepers issue approved quantities with full audit trail and project references.
+          {{ modules[3].description }}
         </p>
       </article>
 
@@ -281,15 +314,15 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/core/all-dashboards.png')"
-            src="/screenshots/core/all-dashboards.png"
+            (click)="openLightbox('core/all-dashboards.png')"
+            [src]="getScreenshot('core/all-dashboards.png')"
             alt="All dashboards overview in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="card-title">All Dashboards (Overview)</h3>
+        <h3 class="card-title">{{ modules[4].name }}</h3>
         <p class="card-body">
-          One place to access every operational and management dashboard in the system.
+          {{ modules[4].description }}
         </p>
       </article>
     </div>
@@ -298,9 +331,9 @@
   <!-- Dashboards / Product tour -->
   <section id="screenshots" class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Dashboards</div>
-      <h2 class="section-title">Dashboards</h2>
-      <p class="section-subtitle">Live insights for managers to make fast, correct decisions.</p>
+      <div class="section-eyebrow">{{ t.dashboardsTitle }}</div>
+      <h2 class="section-title">{{ t.dashboardsTitle }}</h2>
+      <p class="section-subtitle">{{ t.dashboardsSubtitle }}</p>
     </div>
 
     <div class="grid">
@@ -308,71 +341,71 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/item-cost-1.png')"
-            src="/screenshots/dashboards/item-cost-1.png"
+            (click)="openLightbox('dashboards/item-cost-1.png')"
+            [src]="getScreenshot('dashboards/item-cost-1.png')"
             alt="Item cost dashboard view 1"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Item Cost Dashboard (1)</h3>
-        <p class="screenshot-desc">See stock value and cost per item at a glance.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Item Cost Dashboard (1)' : 'لوحة تكلفة العنصر (1)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'See stock value and cost per item at a glance.' : 'شاهد قيمة المخزون والتكلفة لكل عنصر في لمحة.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-1">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/item-cost-2.png')"
-            src="/screenshots/dashboards/item-cost-2.png"
+            (click)="openLightbox('dashboards/item-cost-2.png')"
+            [src]="getScreenshot('dashboards/item-cost-2.png')"
             alt="Item cost dashboard view 2"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Item Cost Dashboard (2)</h3>
-        <p class="screenshot-desc">Drill into items, warehouses, and time periods.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Item Cost Dashboard (2)' : 'لوحة تكلفة العنصر (2)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Drill into items, warehouses, and time periods.' : 'تعمق في العناصر والمستودعات والفترات الزمنية.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-2">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/item-movement-1.png')"
-            src="/screenshots/dashboards/item-movement-1.png"
+            (click)="openLightbox('dashboards/item-movement-1.png')"
+            [src]="getScreenshot('dashboards/item-movement-1.png')"
             alt="Item movement dashboard view 1"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Item Movement Dashboard (1)</h3>
-        <p class="screenshot-desc">Visualize stock in/out activity across locations.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Item Movement Dashboard (1)' : 'لوحة حركة العنصر (1)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Visualize stock in/out activity across locations.' : 'تصور نشاط المخزون الداخل/الخارج عبر المواقع.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-3">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/item-movement-2.png')"
-            src="/screenshots/dashboards/item-movement-2.png"
+            (click)="openLightbox('dashboards/item-movement-2.png')"
+            [src]="getScreenshot('dashboards/item-movement-2.png')"
             alt="Item movement dashboard view 2"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Item Movement Dashboard (2)</h3>
-        <p class="screenshot-desc">Spot fast-moving and slow-moving materials quickly.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Item Movement Dashboard (2)' : 'لوحة حركة العنصر (2)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Spot fast-moving and slow-moving materials quickly.' : 'اكتشف المواد سريعة وبطيئة الحركة بسرعة.' }}</p>
       </article>
 
       <article class="card-soft fade-in">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/item-performance.png')"
-            src="/screenshots/dashboards/item-performance.png"
+            (click)="openLightbox('dashboards/item-performance.png')"
+            [src]="getScreenshot('dashboards/item-performance.png')"
             alt="Item performance dashboard"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Item Performance</h3>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Item Performance' : 'أداء العنصر' }}</h3>
         <p class="screenshot-desc">
-          Measure item usage, performance, and contribution to projects.
+          {{ currentLang === 'en' ? 'Measure item usage, performance, and contribution to projects.' : 'قياس استخدام العنصر وأدائه ومساهمته في المشاريع.' }}
         </p>
       </article>
 
@@ -380,43 +413,43 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/project-cost-center-1.png')"
-            src="/screenshots/dashboards/project-cost-center-1.png"
+            (click)="openLightbox('dashboards/project-cost-center-1.png')"
+            [src]="getScreenshot('dashboards/project-cost-center-1.png')"
             alt="Project cost center dashboard view 1"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Project Cost Center (1)</h3>
-        <p class="screenshot-desc">Track material consumption per project or cost center.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Project Cost Center (1)' : 'مركز تكلفة المشروع (1)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Track material consumption per project or cost center.' : 'تتبع استهلاك المواد لكل مشروع أو مركز تكلفة.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-2">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/project-cost-center-2.png')"
-            src="/screenshots/dashboards/project-cost-center-2.png"
+            (click)="openLightbox('dashboards/project-cost-center-2.png')"
+            [src]="getScreenshot('dashboards/project-cost-center-2.png')"
             alt="Project cost center dashboard view 2"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Project Cost Center (2)</h3>
-        <p class="screenshot-desc">Compare planned vs. actual stock usage for each project.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Project Cost Center (2)' : 'مركز تكلفة المشروع (2)' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Compare planned vs. actual stock usage for each project.' : 'قارن الاستخدام المخطط مقابل الفعلي للمخزون لكل مشروع.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-3">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/dashboards/stock-health.png')"
-            src="/screenshots/dashboards/stock-health.png"
+            (click)="openLightbox('dashboards/stock-health.png')"
+            [src]="getScreenshot('dashboards/stock-health.png')"
             alt="Stock health dashboard"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Stock Health</h3>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Stock Health' : 'صحة المخزون' }}</h3>
         <p class="screenshot-desc">
-          Monitor overstocks, shortages, and slow-moving items in real time.
+          {{ currentLang === 'en' ? 'Monitor overstocks, shortages, and slow-moving items in real time.' : 'راقب المخزون الزائد والنواقص والعناصر بطيئة الحركة في الوقت الفعلي.' }}
         </p>
       </article>
     </div>
@@ -425,9 +458,9 @@
   <!-- Reports -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Reports</div>
-      <h2 class="section-title">Reports</h2>
-      <p class="section-subtitle">Ready-to-export reports your auditors will love.</p>
+      <div class="section-eyebrow">{{ t.reportsTitle }}</div>
+      <h2 class="section-title">{{ t.reportsTitle }}</h2>
+      <p class="section-subtitle">{{ t.reportsSubtitle }}</p>
     </div>
 
     <div class="grid">
@@ -435,42 +468,42 @@
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/reports/reports.png')"
-            src="/screenshots/reports/reports.png"
+            (click)="openLightbox('reports/reports.png')"
+            [src]="getScreenshot('reports/reports.png')"
             alt="Reports center in StockOrbit"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Reports Center</h3>
-        <p class="screenshot-desc">Central hub for all operational and analytical reports.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Reports Center' : 'مركز التقارير' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Central hub for all operational and analytical reports.' : 'المحور المركزي لجميع التقارير التشغيلية والتحليلية.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-1">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/reports/report-inventory-excel.png')"
-            src="/screenshots/reports/report-inventory-excel.png"
+            (click)="openLightbox('reports/report-inventory-excel.png')"
+            [src]="getScreenshot('reports/report-inventory-excel.png')"
             alt="Inventory report in Excel"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Inventory Report – Excel</h3>
-        <p class="screenshot-desc">Detailed inventory report exported directly to Excel.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Inventory Report – Excel' : 'تقرير المخزون – Excel' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Detailed inventory report exported directly to Excel.' : 'تقرير مخزون مفصل يتم تصديره مباشرة إلى Excel.' }}</p>
       </article>
 
       <article class="card-soft fade-in delay-2">
         <div class="screenshot-img">
           <img
             class="screenshot-zoomable"
-            (click)="openLightbox('/screenshots/reports/report-inventory-pdf.png')"
-            src="/screenshots/reports/report-inventory-pdf.png"
+            (click)="openLightbox('reports/report-inventory-pdf.png')"
+            [src]="getScreenshot('reports/report-inventory-pdf.png')"
             alt="Inventory report in PDF"
             loading="lazy"
           />
         </div>
-        <h3 class="screenshot-title">Inventory Report – PDF</h3>
-        <p class="screenshot-desc">Clean, ready-to-share PDF format for management and auditors.</p>
+        <h3 class="screenshot-title">{{ currentLang === 'en' ? 'Inventory Report – PDF' : 'تقرير المخزون – PDF' }}</h3>
+        <p class="screenshot-desc">{{ currentLang === 'en' ? 'Clean, ready-to-share PDF format for management and auditors.' : 'تنسيق PDF نظيف وجاهز للمشاركة للإدارة والمدققين.' }}</p>
       </article>
     </div>
   </section>
@@ -478,10 +511,10 @@
   <!-- Advanced Features -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Advanced Features</div>
-      <h2 class="section-title">Advanced Features</h2>
+      <div class="section-eyebrow">{{ t.advancedTitle }}</div>
+      <h2 class="section-title">{{ t.advancedTitle }}</h2>
       <p class="section-subtitle">
-        Control, automation, and visibility across your entire stock operation.
+        {{ t.advancedSubtitle }}
       </p>
     </div>
 
@@ -528,16 +561,16 @@
   <!-- AI Copilot -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">AI Copilot</div>
-      <h2 class="section-title">AI Copilot — powered by ChatGPT</h2>
-      <p class="section-subtitle">Your team’s personal assistant for stock operations.</p>
+      <div class="section-eyebrow">{{ currentLang === 'en' ? 'AI Copilot' : 'المساعد الذكي' }}</div>
+      <h2 class="section-title">{{ t.aiTitle }}</h2>
+      <p class="section-subtitle">{{ t.aiSubtitle }}</p>
     </div>
 
     <div class="grid">
       <article class="card-soft fade-in">
         <div class="screenshot-img">
           <img
-            src="/screenshots/bonus/ai-copilot.png"
+            [src]="getScreenshot('bonus/ai-copilot.png')"
             alt="AI Copilot in StockOrbit"
             loading="lazy"
           />
@@ -545,15 +578,15 @@
       </article>
 
       <article class="card-soft fade-in delay-1">
-        <h3 class="card-title">What the Copilot can do</h3>
+        <h3 class="card-title">{{ t.aiWhatCanDo }}</h3>
         <ul style="list-style: disc; padding-left: 1.5rem; margin: 0" class="card-body">
-          <li>Explain stock issues</li>
-          <li>Generate reports</li>
-          <li>Create requests</li>
-          <li>Approve vouchers</li>
-          <li>Predict stock shortages</li>
-          <li>Navigate the system</li>
-          <li>Convert natural language into actions</li>
+          <li>{{ currentLang === 'en' ? 'Explain stock issues' : 'شرح مشاكل المخزون' }}</li>
+          <li>{{ currentLang === 'en' ? 'Generate reports' : 'إنشاء التقارير' }}</li>
+          <li>{{ currentLang === 'en' ? 'Create requests' : 'إنشاء الطلبات' }}</li>
+          <li>{{ currentLang === 'en' ? 'Approve vouchers' : 'الموافقة على الإيصالات' }}</li>
+          <li>{{ currentLang === 'en' ? 'Predict stock shortages' : 'التنبؤ بنقص المخزون' }}</li>
+          <li>{{ currentLang === 'en' ? 'Navigate the system' : 'التنقل في النظام' }}</li>
+          <li>{{ currentLang === 'en' ? 'Convert natural language into actions' : 'تحويل اللغة الطبيعية إلى إجراءات' }}</li>
         </ul>
       </article>
     </div>
@@ -562,9 +595,9 @@
   <!-- Why StockOrbit Wins -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Comparison</div>
-      <h2 class="section-title">Why StockOrbit Wins</h2>
-      <p class="section-subtitle">From scattered tools and manual work to one focused platform.</p>
+      <div class="section-eyebrow">{{ currentLang === 'en' ? 'Comparison' : 'مقارنة' }}</div>
+      <h2 class="section-title">{{ t.comparisonTitle }}</h2>
+      <p class="section-subtitle">{{ t.comparisonSubtitle }}</p>
     </div>
 
     <div class="grid">
@@ -598,9 +631,9 @@
   <!-- Support & Continuous Updates -->
   <section class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Support &amp; Updates</div>
-      <h2 class="section-title">Support &amp; Continuous Updates</h2>
-      <p class="section-subtitle">We stay with you after go-live — not just during the project.</p>
+      <div class="section-eyebrow">{{ currentLang === 'en' ? 'Support & Updates' : 'الدعم والتحديثات' }}</div>
+      <h2 class="section-title">{{ t.supportTitle }}</h2>
+      <p class="section-subtitle">{{ t.supportSubtitle }}</p>
     </div>
 
     <div class="grid">
@@ -619,56 +652,18 @@
   <!-- FAQ -->
   <section id="faqs" class="section">
     <div class="section-header">
-      <div class="section-eyebrow">FAQ</div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="section-eyebrow">{{ currentLang === 'en' ? 'FAQ' : 'الأسئلة الشائعة' }}</div>
+      <h2 class="section-title">{{ t.faqTitle }}</h2>
       <p class="section-subtitle">
-        The questions most companies ask before they switch from Excel and manual stock handling.
+        {{ t.faqSubtitle }}
       </p>
     </div>
 
     <div class="contact-inner">
-      <div class="faq-item">
-        <h3 class="faq-question">Does it support multiple warehouses?</h3>
+      <div class="faq-item" *ngFor="let faq of faqs">
+        <h3 class="faq-question">{{ faq.question }}</h3>
         <p class="faq-answer">
-          Yes. You can define multiple main, site, and project warehouses with full control and
-          reporting.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq-question">Do you support approvals?</h3>
-        <p class="faq-answer">
-          Yes. StockOrbit includes configurable multi-level approvals for requests, issue vouchers,
-          and other workflows.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq-question">Do you support mobile?</h3>
-        <p class="faq-answer">
-          The web app is fully responsive and works on laptops and tablets, with support for
-          mobile-friendly approvals and views.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq-question">Is AI really included?</h3>
-        <p class="faq-answer">
-          Yes. The AI Copilot is built-in, powered by ChatGPT, and helps users understand data,
-          generate insights, and perform actions.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq-question">Do you support Arabic?</h3>
-        <p class="faq-answer">Yes, full English + Arabic from login to reports.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq-question">How fast can we go live?</h3>
-        <p class="faq-answer">
-          In days, not months — depending on how fast we receive your data and configuration
-          decisions.
+          {{ faq.answer }}
         </p>
       </div>
     </div>
@@ -677,11 +672,10 @@
   <!-- Contact -->
   <section id="contact" class="section">
     <div class="section-header">
-      <div class="section-eyebrow">Contact</div>
-      <h2 class="section-title">Book a quick demo</h2>
+      <div class="section-eyebrow">{{ currentLang === 'en' ? 'Contact' : 'اتصل بنا' }}</div>
+      <h2 class="section-title">{{ t.contactTitle }}</h2>
       <p class="section-subtitle">
-        Send a short message and we’ll come back with a demo slot and a tailored walkthrough based
-        on your industry.
+        {{ t.contactSubtitle }}
       </p>
     </div>
 
@@ -690,45 +684,44 @@
       <form class="contact-form" method="POST" action="https://formspree.io/f/mnneavwe">
         <div class="form-row">
           <div class="form-field">
-            <label for="name">Name</label>
+            <label for="name">{{ t.contactName }}</label>
             <input id="name" name="name" required />
           </div>
 
           <div class="form-field">
-            <label for="company">Company</label>
+            <label for="company">{{ t.contactCompany }}</label>
             <input id="company" name="company" />
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
-            <label for="email">Work email</label>
+            <label for="email">{{ t.contactEmail }}</label>
             <input id="email" name="email" type="email" required />
           </div>
 
           <div class="form-field">
-            <label for="phone">Phone / WhatsApp</label>
+            <label for="phone">{{ t.contactPhone }}</label>
             <input id="phone" name="phone" />
           </div>
         </div>
 
         <div class="form-field">
-          <label for="message">What are you struggling with today?</label>
+          <label for="message">{{ t.contactMessage }}</label>
           <textarea
             id="message"
             name="message"
             rows="4"
-            placeholder="Example: we have 3 warehouses and Excel is out of control..."
+            [placeholder]="t.contactPlaceholder"
             required
           ></textarea>
         </div>
 
-        <button type="submit" class="contact-submit">Send message</button>
+        <button type="submit" class="contact-submit">{{ t.contactSubmit }}</button>
       </form>
 
       <p class="contact-note">
-        Later you can replace this with your own API or .NET backend. For now, Formspree (or a
-        similar service) will email submissions directly to you.
+        {{ t.contactNote }}
       </p>
     </div>
   </section>
