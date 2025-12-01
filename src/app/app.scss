@@ -336,12 +336,14 @@
 .faq-question {
   font-size: 1rem;
   margin-bottom: 6px;
+  text-align: left; // Default LTR alignment
 }
 
 .faq-answer {
   margin: 0;
   color: var(--so-text-muted);
   font-size: 0.9rem;
+  text-align: left; // Default LTR alignment
 }
 
 /* ---------- Contact ---------- */
@@ -736,22 +738,36 @@
   .hero-subtitle,
   .section-title,
   .section-eyebrow,
+  .section-subtitle,
   .metrics,
   .metric-card,
   .metric-label,
   .metric-value,
-  .card-title,
-  .screenshot-title,
-  .faq-question {
+  .screenshot-title {
     text-align: center;
   }
 
-  // Body text right-aligned in AR (but not hero-subtitle which is a heading)
-  p:not(.hero-subtitle),
+  // Capabilities section - center all content (higher specificity)
+  #features .card-title,
+  #features .card-body {
+    text-align: center !important;
+  }
+
+  // Other card titles - centered
+  .card-title {
+    text-align: center;
+  }
+
+  // Body text right-aligned in AR (but not hero-subtitle, section-subtitle, Capabilities cards, or FAQ)
+  p:not(.hero-subtitle):not(.section-subtitle),
   .card-body,
-  .section-subtitle,
-  .faq-answer,
   .screenshot-desc {
+    text-align: right;
+  }
+
+  // FAQ questions and answers follow RTL direction (right-aligned in Arabic)
+  .faq-question,
+  .faq-answer {
     text-align: right;
   }
 
